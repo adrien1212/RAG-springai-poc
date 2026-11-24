@@ -19,11 +19,6 @@ public class RagWithSpringApplication {
 	}
 
 	@Bean
-	public SimpleVectorStore vectorStore(EmbeddingModel embeddingModel) {
-		return SimpleVectorStore.builder(embeddingModel).build();
-	}
-
-	@Bean
 	ChatClient defaultChatClient(ChatClient.Builder builder, VectorStore vectorStore) {
 		return builder
 				.defaultAdvisors(QuestionAnswerAdvisor.builder(vectorStore)
